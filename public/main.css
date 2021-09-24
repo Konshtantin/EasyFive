@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+ul {
+    list-style: none;
+}
+body {
+    min-height: 100vh;
+    background-color: rgb(10, 10, 10);
+    padding: 1rem;
+}
+
+.container, .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-group label {
+    color: rgb(214, 214, 214);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.form-group input {
+    background-color: rgb(80, 80, 80);
+    border: 1px solid #fff;
+    color: #fff;
+    outline: none;
+    font-size: 1rem;
+    text-align: center;
+    padding: .1rem;
+    border-radius: .1rem;
+    width: 100%;
+}
+
+.form-group {
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#get5 {
+    margin-top: .8rem;
+    padding: .4rem;
+    font-size: .9rem;
+    border: none;
+    outline: none;
+    color: #000;
+    font-weight: 500;
+    border-radius: .1rem;
+    background-image: linear-gradient(to right bottom, rgb(75, 196, 115), rgb(64, 83, 187));
+}
+.results-field ul li{
+    color: rgb(214, 214, 214);
+    margin-top: 2rem;
+}
+
+#up a i{
+    position: fixed;
+    color: #fff;
+    font-size: 3rem;
+    right: 1.5rem;
+    bottom: 2rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px #fff,
+    0 0 10px #fff inset;
+}
+#up a{
+    padding: .2rem;
+}

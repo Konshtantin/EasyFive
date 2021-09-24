@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Five</title>
+    <link rel="stylesheet" href="/main.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="aj"></div>
+    <div class="container">
+        <div class="form">
+            <div class="form-group">
+                <label for="expression">Выражение без пробелов (2 в степени 4 пишется 2**4): </label>
+                <input type="text" id="expression" name="expression">
+            </div>
+            <div class="form-group">
+                <label for="notation">Система счисления: </label>
+                <input type="number" name="notation" id="notation">
+            </div>
+    
+            <button id="get5">Взломать <%= variants[Math.floor(Math.random()*5.9)] %></button>
+        </div>
+        <div class="results-field">
+            <ul class="results"></ul>
+        </div>
+    </div>
+    <div id="up"><a href="#aj"><i class='bx bxs-chevrons-up'></i></a></div>
+    <script src="/main.js"></script>
+</body>
+</html>
