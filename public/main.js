@@ -63,10 +63,18 @@ function showResults(value) {
         results.append(li)
     }
 }
-button.onclick = (e) => {
+button.onclick = async (e) => {
     results.innerHTML = ''
     base = +not.value
-    let num = eval(exp.value)
+    
+    let num = await fetch('/evl', {
+        method: 'POST',
+        body: JSON.stringify({exp: exp.value}),
+        headers: {'Content-Type': 'application/json'}
+    })
+        .then(response => response.json())
+        .then(data => data['result'])
+    
     if(num <= base) {
         exp.value = ''
         not.value = ''
