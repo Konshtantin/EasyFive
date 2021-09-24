@@ -85,8 +85,10 @@ button.onclick = async (e) => {
 }
 
 exp.oninput = (e) => {
-    const symbols = '1234567890*-+/()'
-    if(!symbols.includes(e.data)) {
-        exp.value = exp.value.slice(0, exp.value.length-1)
+    if(e.inputType === 'insertText') {
+        const symbols = '1234567890*-+/()'
+        if(!symbols.includes(e.data)) {
+            exp.value = exp.value.slice(0, exp.value.length-1)
+        }
     }
 }
