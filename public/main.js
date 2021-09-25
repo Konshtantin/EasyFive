@@ -12,9 +12,10 @@ up.onclick = () => {
 function toNotation(num) {
     let string = ''
     let i = num
-    while(i >= base) {
-        string += i%base
-        i = (i-(i%base))/base
+    let BIbase = BigInt(base)
+    while(i >= BIbase) {
+        string += i%BIbase
+        i = (i-(i%BIbase))/BIbase
     }
     string += i.toString()
     return string.split('').reverse().join('')
@@ -66,19 +67,20 @@ function showResults(value) {
 button.onclick = async (e) => {
     results.innerHTML = ''
     base = +not.value
-    if(base > 5000) {
+    if(base > 5000 || base < 2 || exp.value.length > 50) {
         exp.value = ''
         not.value = ''
         return
     }
-    let num = await fetch('/evl', {
+    let res = await fetch('/evl', {
         method: 'POST',
         body: JSON.stringify({exp: exp.value}),
         headers: {'Content-Type': 'application/json'}
     })
         .then(response => response.json())
-        .then(data => data['result'])
-    
+        .then(data => data)
+    let num = BigInt(res['result'])
+    exp.value = res['exp']
     if(num <= base) {
         exp.value = ''
         not.value = ''
@@ -89,10 +91,8 @@ button.onclick = async (e) => {
 }
 
 exp.oninput = (e) => {
-    if(e.inputType === 'insertText') {
-        const symbols = '1234567890*-+/()'
-        if(!symbols.includes(e.data)) {
-            exp.value = exp.value.slice(0, exp.value.length-1)
-        }
+    const symbols = '1234567890*-+/()'
+    if(!(e.inputType === 'deleteContentBackward') && !symbols.includes(e.data)) {
+       exp.value = exp.value.slice(0, exp.value.length-1)
     }
 }

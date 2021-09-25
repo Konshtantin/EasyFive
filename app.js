@@ -23,9 +23,36 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/evl', (req, res) => {
-    let result = eval(req.body.exp)
-    res.json({result: result})
+app.post('/evl', 
+    (req, res, next) => {
+        const symbols = '1234567890/*-+'
+        for(let i = 0; i < req.body.exp.length; i++) {
+            if(!symbols.includes(req.body.exp[i])) {
+                req.body.exp = req.body.exp.slice(0, i) + req.body.exp.slice(i+1)
+                i--
+            }
+        }
+        next()
+    },
+(req, res) => {
+    let num = (req.body.exp)
+    let i = 0
+    while(i < num.length) {
+        if('+-*/'.includes(num[i])) {
+            i++
+            continue
+        }
+        let oneNum = ''
+        let j = i
+        while(isFinite(num[j]) && j < num.length) {
+            oneNum += num[j]
+            j++
+        }
+        num = num.slice(0, j) + 'n' + num.slice(j)
+        i = j+2
+    }
+    let result = eval(num).toString()
+    res.json({result: result, exp: req.body.exp})
 })
 
 app.listen(PORT)
