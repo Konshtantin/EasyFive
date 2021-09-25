@@ -38,7 +38,7 @@ app.post('/evl',
     let num = (req.body.exp)
     let i = 0
     while(i < num.length) {
-        if('+-*/'.includes(num[i])) {
+        if('+-*/()'.includes(num[i])) {
             i++
             continue
         }
