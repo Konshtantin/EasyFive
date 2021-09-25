@@ -66,7 +66,11 @@ function showResults(value) {
 button.onclick = async (e) => {
     results.innerHTML = ''
     base = +not.value
-    
+    if(base > 5000) {
+        exp.value = ''
+        not.value = ''
+        return
+    }
     let num = await fetch('/evl', {
         method: 'POST',
         body: JSON.stringify({exp: exp.value}),
