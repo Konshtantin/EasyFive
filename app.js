@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
 app.post('/evl', 
     (req, res, next) => {
-        const symbols = '1234567890/*-+'
+        const symbols = '1234567890/*-+()'
         for(let i = 0; i < req.body.exp.length; i++) {
             if(!symbols.includes(req.body.exp[i])) {
                 req.body.exp = req.body.exp.slice(0, i) + req.body.exp.slice(i+1)
