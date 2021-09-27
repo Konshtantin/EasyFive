@@ -75,7 +75,7 @@ function showResults(value, num) {
 button.onclick = async (e) => {
     results.innerHTML = ''
     base = +not.value
-    if(base > 5000 || base < 2 || exp.value.length > 50) {
+    if(base > 5000 || base < 2 || exp.value.length > 400) {
         exp.value = ''
         not.value = ''
         return
