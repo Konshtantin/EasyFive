@@ -21,11 +21,19 @@ function toNotation(num) {
     return string.split('').reverse().join('')
 }
 
-function showResults(value) {
+function showResults(value, num) {
     let sum = 0
     for(let i = 0; i < value.length; i++) {
         sum += +value[i]
     }
+    let linum = document.createElement('li')
+    let livalue = document.createElement('li')
+    linum.textContent = `Число в исходной системе счисления(10):\n ${num}`
+    linum.classList.add('linum')
+    livalue.textContent = `Число в системе счисления ${base}:\n ${value}`
+    livalue.classList.add('livalue')
+    results.append(linum)
+    results.append(livalue)
     let li = document.createElement('li')
     li.classList.add('sum')
     li.textContent = `Сумма всех чисел равна: ${sum}`
@@ -87,7 +95,7 @@ button.onclick = async (e) => {
         return
     }
     let value = toNotation(num)
-    showResults(value)
+    showResults(value, num)
 }
 
 exp.oninput = (e) => {
