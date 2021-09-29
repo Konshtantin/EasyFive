@@ -51,7 +51,11 @@ app.post('/evl',
         num = num.slice(0, j) + 'n' + num.slice(j)
         i = j+2
     }
-    let result = eval(num).toString()
+    let result = ''
+    if(num === undefined) {
+        result = 0
+    } else {
+        result = eval(num).toString()
     res.json({result: result, exp: req.body.exp})
 })
 
